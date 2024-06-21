@@ -56,8 +56,9 @@ class KelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kelas $kelas)
+    public function edit($kelas)
     {
+        $kelas = Kelas::find($kelas);
         $jurusan = Jurusan::all();
         return view('kelas.edit')->with('jurusan', $jurusan)->with('kelas', $kelas);
     }
@@ -65,7 +66,7 @@ class KelasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kelas $kelas)
+    public function update(Request $request,$kelas)
     {
         $val = $request->validate([
             'jurusan_id'=> 'required',
@@ -76,6 +77,7 @@ class KelasController extends Controller
             'motto'=> 'required|max:45'
         ]);
 
+        $kelas = Kelas::find($kelas);
         Kelas::where('id', $kelas['id'])->update($val);
         return redirect()->route('kelas.index')->with('success', $val['nama'].' Berhasil di Edit');
     }
