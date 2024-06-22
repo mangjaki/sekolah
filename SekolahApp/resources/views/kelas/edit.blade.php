@@ -1,11 +1,11 @@
 @extends('layout.main')
 
-@section('title','TAMBAH KELAS')
+@section('title','EDIT KELAS')
     
 @section('content')
 <div class="card">
     <div class="card-body">
-      <h3 class="text-center">Form Tambah Kelas</h3>
+      <h3 class="text-center">Form Edit Kelas</h3>
       <!-- Vertical Form -->
       <form class="row g-3" method="POST" action="{{ route('kelas.update', $kelas['id']) }}">
         @method('PUT')
