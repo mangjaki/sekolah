@@ -47,7 +47,7 @@ class GuruController extends Controller
 
         //extensi file yang di upload
         $ext = $request->url_guru->getClientOriginalExtension();
-        //rename misal: nuptk.extensi 2226240096.png
+        //rename misal: nuptk.extensi 123456789.png
         $val['url_guru'] = $request->nuptk.".".$ext;
         //upload ke dalam folder public/fotoguru/
         $request->url_guru->move('fotoguru/', $val['url_guru']);
@@ -79,7 +79,7 @@ class GuruController extends Controller
      */
     public function update(Request $request, $guru)
     {
-        if ($request->url_foto){
+        if ($request->url_guru){
             $val = $request->validate([
                 'url_guru'=> 'required|file|mimes:png,jpg|max:5000',
                 'nuptk'=> 'required|max:16',

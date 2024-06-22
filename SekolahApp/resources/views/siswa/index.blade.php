@@ -1,41 +1,62 @@
 @extends('layout.main')
 
-@section('title', 'JURUSAN')
+@section('title', 'SISWA')
 
 @section('content')
-<h1 class="text-center">JURUSAN</h1>
-<a href="{{ route('jurusan.create') }}" class="btn btn-primary col-lg-12 mb-3">Tambah Jurusan</a>
+<h1 class="text-center">SISWA</h1>
+<a href="{{ route('siswa.create') }}" class="btn btn-primary col-lg-12 mb-3">Tambah Siswa</a>
 <table class="table table-bordered border-primary">
   <thead>
     <tr>
-      <th class="col text-center">Singkatan Jurusan</th>
-      <th class="col text-center">Nama Jurusan</th>
-      <th class="col text-center">Pimpinan Jurusan</th>
-      <th class="col text-center">Deskripsi Jurusan</th>
-      <th class="col text-center">Aksi</th>
+      <th class="col text-center">Foto</th>
+      <th class="col text-center">NISN</th>
+      <th class="col text-center">Nama Siswa</th>
+      <th class="col text-center">Jenis Kelamin</th>
+      <th class="col text-center">Alamat</th>
+      <th class="col text-center">Jurusan</th>
+      <th class="col text-center">Kelas</th>
+      <th class="col text-center">Guru Pembimbing</th>
+      <th class="col text-center">Tempat Lahir</th>
+      <th class="col text-center">Tanggal Lahir</th>
+      <th class="col-5 text-center">Aksi</th>
     </tr>
   </thead>
   <tbody>
-    @foreach ($jurusan as $item)
+    @foreach ($guru as $item)
         <tr>
+          <td class="text-center ">
+            <img src="{{ url('fotosiswa/'.$item['url_siswa']) }}" class="img-fluid" style="max-width:50px;">
+          </td>
           <td class="text-center">
-            {{ $item['singkatan'] }}
+            {{ $item['nuptk'] }}
           </td>
           <td class="text-center">
             {{ $item['nama'] }}
           </td>
           <td class="text-center">
-            {{ $item['pimpinan'] }}
+            {{ $item['jenis_kelamin'] }}
           </td>
           <td class="text-center">
-            {{ $item['deskripsi'] }}
+            {{ $item['alamat'] }}
           </td>
           <td class="text-center">
-            <form action="{{route('jurusan.destroy', $item["id"])}}" method="post">
+            {{ $item['jurusan']['singkatan'] }}
+          </td>
+          <td class="text-center">
+            {{ $item['kelas']['nama'] }}
+          </td>
+          <td class="text-center">
+            {{ $item['guru']['nama'] }}
+          </td>
+          <td class="text-center">
+            {{ $item['tanggal_lahir'] }}
+          </td>
+          <td class="text-center">
+            <form action="{{route('guru.destroy', $item["id"])}}" method="post">
               @method('DELETE')
               @csrf
               <button type="submit" class="btn btn-sm btn-danger show_confirm" data-name="{{ $item['nama'] }}">Hapus</button>
-              <a href="{{route('jurusan.edit', $item["id"])}}" class="btn btn-sm btn-warning col-lg-5">Edit</a>
+              <a href="{{route('guru.edit', $item["id"])}}" class="btn btn-sm btn-warning col-lg-5">Edit</a>
             </form>
           </td>
         </tr>
@@ -61,7 +82,7 @@
        let name = $(this).data("name");
        event.preventDefault();
        Swal.fire({
-         title: " Yakin Mau di hapus? ",
+         title: " Yakin Mau di hapus ? ",
          text: "Data Kamu tidak akan bisa Kembali lagi!",
          icon: "warning",
          showCancelButton: true,

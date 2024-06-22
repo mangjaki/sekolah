@@ -81,13 +81,13 @@
        let name = $(this).data("name");
        event.preventDefault();
        Swal.fire({
-         title: " Yakin nak di hapus? ",
-         text: "Dak biso balek lagi buyan data kau!",
+         title: " Yakin Mau di hapus ? ",
+         text: "Data Kamu tidak akan bisa Kembali lagi!",
          icon: "warning",
          showCancelButton: true,
          confirmButtonColor: "#3085d6",
          cancelButtonColor: "#d33",
-         confirmButtonText: "iyo, Serah aku!"
+         confirmButtonText: "Iya, Yakin!"
        })
        .then((willDelete) => {
          if (willDelete.isConfirmed) {
