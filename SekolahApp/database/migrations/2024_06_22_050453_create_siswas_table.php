@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('url_siswa');
             $table->string('nisn');
-            $table->string('kelas');
+            $table->string('nama');
             $table->string('jenis_kelamin');
             $table->string('alamat');
             $table->foreignId('jurusan_id')->constrained();

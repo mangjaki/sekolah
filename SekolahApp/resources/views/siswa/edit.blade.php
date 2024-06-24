@@ -11,8 +11,8 @@
         @method('PUT')
         @csrf
         <div class="col-12 ">
-            <label for="nuptk" class="form-label">NUPTK Guru</label>
-            <input type="text" class="form-control" id="nuptk" name="nuptk" value="{{old('nuptk') ? old('nuptk'): $guru['nuptk'] }}" placeholder="Masukan NUPTK Guru" readonly>
+            <label for="nisn" class="form-label">Nisn Siswa</label>
+            <input type="text" class="form-control" id="nisn" name="nisn" value="{{old('nuptk') ? old('nuptk'): $guru['nuptk'] }}" placeholder="Masukan NUPTK Guru" readonly>
         </div>
         <div class="col-12 ">
             <label for="nama" class="form-label">Nama Guru</label>

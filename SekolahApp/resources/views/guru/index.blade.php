@@ -17,7 +17,7 @@
       <th class="col text-center">Jurusan Ajaran</th>
       <th class="col text-center">Tempat Lahir</th>
       <th class="col text-center">Tanggal Lahir</th>
-      <th class="col-5 text-center">Aksi</th>
+      <th class="col text-center">Aksi</th>
     </tr>
   </thead>
   <tbody>
@@ -55,7 +55,7 @@
               @method('DELETE')
               @csrf
               <button type="submit" class="btn btn-sm btn-danger show_confirm" data-name="{{ $item['nama'] }}">Hapus</button>
-              <a href="{{route('guru.edit', $item["id"])}}" class="btn btn-sm btn-warning col-lg-5">Edit</a>
+              <a href="{{route('guru.edit', $item["id"])}}" class="btn btn-sm btn-warning col-lg-6">Edit</a>
             </form>
           </td>
         </tr>
