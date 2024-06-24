@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('jurusan_id')->constrained();
             $table->foreignId('kelas_id')->constrained();
             $table->foreignId('guru_id')->constrained();
+            $table->foreignId('eskul_id')->constrained();
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
             $table->timestamps();

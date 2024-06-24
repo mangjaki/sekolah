@@ -16,6 +16,7 @@
         <th class="col text-center">Alamat</th>
         <th class="col text-center">Jurusan</th>
         <th class="col text-center">Kelas</th>
+        <th class="col text-center">Ekstrakulikuler</th>
         <th class="col text-center">Guru Pembimbing</th>
         <th class="col text-center">Tempat Lahir</th>
         <th class="col text-center">Tanggal Lahir</th>
@@ -47,6 +48,9 @@
               {{ $item['kelas']['nama'] }}
             </td>
             <td class="text-center">
+              {{ $item['eskul']['nama'] }}
+            </td>
+            <td class="text-center">
               {{ $item['guru']['nama'] }}
             </td>
             <td class="text-center">
@@ -56,11 +60,11 @@
               {{ $item['tanggal_lahir'] }}
             </td>
             <td class="text-center">
-              <form action="{{route('guru.destroy', $item["id"])}}" method="post">
+              <form action="{{route('siswa.destroy', $item["id"])}}" method="post">
                 @method('DELETE')
                 @csrf
                 <button type="submit" class="btn btn-sm btn-danger show_confirm" data-name="{{ $item['nama'] }}">Hapus</button>
-                <a href="{{route('guru.edit', $item["id"])}}" class="btn btn-sm btn-warning col-lg-5">Edit</a>
+                <a href="{{route('siswa.edit', $item["id"])}}" class="btn btn-sm btn-warning col-lg-5">Edit</a>
               </form>
             </td>
           </tr>

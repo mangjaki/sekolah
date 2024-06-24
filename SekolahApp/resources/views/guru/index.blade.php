@@ -55,7 +55,7 @@
               @method('DELETE')
               @csrf
               <button type="submit" class="btn btn-sm btn-danger show_confirm" data-name="{{ $item['nama'] }}">Hapus</button>
-              <a href="{{route('guru.edit', $item["id"])}}" class="btn btn-sm btn-warning col-lg-6">Edit</a>
+              <a href="{{route('guru.edit', $item["id"])}}" class="btn btn-sm btn-warning col-lg-5">Edit</a>
             </form>
           </td>
         </tr>

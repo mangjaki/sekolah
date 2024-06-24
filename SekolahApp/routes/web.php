@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EksulController;
+use App\Http\Controllers\EskulController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\KelasController;
@@ -21,6 +23,8 @@ Route::resource('guru', GuruController::class);
 Route::resource('jurusan', JurusanController::class);
 Route::resource('kelas', KelasController::class);
 Route::resource('siswa', SiswaController::class);
+Route::resource('eskul', EskulController::class);
+
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {

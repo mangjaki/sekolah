@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Eskul;
 use App\Models\Guru;
 use App\Models\Jurusan;
 use App\Models\Kelas;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class SiswaController extends Controller
 {
@@ -26,8 +28,9 @@ class SiswaController extends Controller
     {
         $jurusan = Jurusan::all();
         $kelas = Kelas::all();
+        $eskul = Eskul::all();
         $guru = Guru::all();
-        return view('siswa.create')->with('jurusan', $jurusan)->with('kelas', $kelas)->with('guru', $guru);
+        return view('siswa.create')->with('jurusan', $jurusan)->with('kelas', $kelas)->with('guru', $guru)->with('eskul', $eskul);
     }
 
     /**
@@ -44,6 +47,7 @@ class SiswaController extends Controller
             'jurusan_id'=> 'required',
             'kelas_id'=> 'required',
             'guru_id'=> 'required',
+            'eskul_id'=> 'required',
             'tempat_lahir'=> 'required|max:45',
             'tanggal_lahir'=> 'required'
         ]);
@@ -75,14 +79,15 @@ class SiswaController extends Controller
         $siswa = Siswa::find($siswa);
         $jurusan = Jurusan::all();
         $kelas = Kelas::all();
+        $eskul = Eskul::all();
         $guru = Guru::all();
-        return view('siswa.edit')->with('jurusan', $jurusan)->with('kelas', $kelas)->with('guru', $guru);
+        return view('siswa.edit')->with('jurusan', $jurusan)->with('kelas', $kelas)->with('eskul', $eskul)->with('guru', $guru)->with('siswa', $siswa);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Siswa $siswa)
+    public function update(Request $request,$siswa)
     {
         if ($request->url_siswa){
             $val = $request->validate([
@@ -94,6 +99,7 @@ class SiswaController extends Controller
                 'jurusan_id'=> 'required',
                 'kelas_id'=> 'required',
                 'guru_id'=> 'required',
+                'eskul_id'=> 'required',
                 'tempat_lahir'=> 'required|max:45',
                 'tanggal_lahir'=> 'required'
             ]);
@@ -113,6 +119,7 @@ class SiswaController extends Controller
                 'jurusan_id'=> 'required',
                 'kelas_id'=> 'required',
                 'guru_id'=> 'required',
+                'eskul_id'=> 'required',
                 'tempat_lahir'=> 'required|max:45',
                 'tanggal_lahir'=> 'required'
             ]);
@@ -126,8 +133,11 @@ class SiswaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Siswa $siswa)
+    public function destroy($siswa)
     {
-        //
+        $siswa = Siswa::find($siswa);
+        File::delete('fotosiswa/'.$siswa['url_siswa']);
+        $siswa->delete();
+        return redirect()->route('siswa.index')->with('success',' Data Berhasil di Hapus');
     }
 }

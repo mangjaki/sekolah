@@ -1,41 +1,41 @@
 @extends('layout.main')
 
-@section('title', 'JURUSAN')
+@section('title', 'EKSTRAKULIKULER')
 
 @section('content')
-<h1 class="text-center">JURUSAN</h1>
-<a href="{{ route('jurusan.create') }}" class="btn btn-primary col-lg-12 mb-3">Tambah Jurusan</a>
+<h1 class="text-center">EKTRAKULIKULER</h1>
+<a href="{{ route('eskul.create') }}" class="btn btn-primary col-lg-12 mb-3">Tambah Eskul</a>
 <table class="table table-bordered border-primary">
   <thead>
     <tr>
-      <th class="col text-center">Singkatan Jurusan</th>
-      <th class="col text-center">Nama Jurusan</th>
-      <th class="col text-center">Pimpinan Jurusan</th>
-      <th class="col text-center">Deskripsi Jurusan</th>
+      <th class="col text-center">Kode Eskul</th>
+      <th class="col text-center">Nama Eskul</th>
+      <th class="col text-center">Pelatih</th>
+      <th class="col text-center">Tanggal Resmi</th>
       <th class="col text-center">Aksi</th>
     </tr>
   </thead>
   <tbody>
-    @foreach ($jurusan as $item)
+    @foreach ($eskul as $item)
         <tr>
           <td class="text-center">
-            {{ $item['singkatan'] }}
+            {{ $item['kode_eskul'] }}
           </td>
           <td class="text-center">
             {{ $item['nama'] }}
           </td>
           <td class="text-center">
-            {{ $item['pimpinan'] }}
+            {{ $item['pelatih'] }}
           </td>
           <td class="text-center">
-            {{ $item['deskripsi'] }}
+            {{ $item['tanggal_resmi'] }}
           </td>
           <td class="text-center">
-            <form action="{{route('jurusan.destroy', $item["id"])}}" method="post">
+            <form action="{{route('eskul.destroy', $item["id"])}}" method="post">
               @method('DELETE')
               @csrf
               <button type="submit" class="btn btn-sm btn-danger show_confirm" data-name="{{ $item['nama'] }}">Hapus</button>
-              <a href="{{route('jurusan.edit', $item["id"])}}" class="btn btn-sm btn-warning col-lg-5">Edit</a>
+              <a href="{{route('eskul.edit', $item["id"])}}" class="btn btn-sm btn-warning col-lg-3">Edit</a>
             </form>
           </td>
         </tr>

@@ -9,7 +9,7 @@ class Siswa extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'url_siswa','nisn','nama','jenis_kelamin','alamat','jurusan_id','kelas_id','guru_id','tempat_lahir','tanggal_lahir'
+        'url_siswa','nisn','nama','jenis_kelamin','alamat','jurusan_id','kelas_id','guru_id','eskul_id','tempat_lahir','tanggal_lahir'
     ];
 
     public function jurusan(){
@@ -20,5 +20,8 @@ class Siswa extends Model
     }
     public function guru(){
         return $this->belongsTo(Guru::class, 'guru_id');
+    }
+    public function eskul(){
+        return $this->belongsTo(Eskul::class, 'eskul_id');
     }
 }

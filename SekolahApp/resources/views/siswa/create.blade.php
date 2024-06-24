@@ -26,7 +26,7 @@
         </div>
         <div class="col-12 ">
             <label for="alamat" class="form-label">Alamat Siswa</label>
-            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan Alamat Guru">
+            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukan Alamat Siswa">
         </div>
         <div class="col-12 ">
             <label for="jurusan_id" class="form-label">Jurusan Siswa</label>
@@ -42,6 +42,16 @@
             <label for="kelas_id" class="form-label">Kelas Siswa</label>
             <select class="form-control" id="kelas_id" name="kelas_id" placeholder="Masukan Kelas">
                 @foreach ($kelas as $items)
+                    <option value="{{$items['id']}}">
+                        {{$items['nama']}}
+                    </option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-12 ">
+            <label for="eskul_id" class="form-label">Ekstrakulikuler</label>
+            <select class="form-control" id="eskul_id" name="eskul_id" placeholder="Masukan Eskul">
+                @foreach ($eskul as $items)
                     <option value="{{$items['id']}}">
                         {{$items['nama']}}
                     </option>
